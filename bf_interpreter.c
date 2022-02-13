@@ -187,6 +187,3 @@ int main() {
 	
     return 0;
 } 
-
-
-//  fprintf(stderr, "Error: ");
