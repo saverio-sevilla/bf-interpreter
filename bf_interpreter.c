@@ -135,18 +135,50 @@ int compile(FILE* fptr, struct Stack* stack) {
 
 int execute() {
     unsigned short data[DATA_SIZE], prog_pos = 0;
-    unsigned int data_pos = DATA_SIZE;
+	
+    unsigned int data_pos = DATA_SIZE;  // sets all the data array elements to zero
     while (--data_pos != 0) { data[data_pos] = 0; }
+	
     while (PROGRAM[prog_pos].type != EOF_TOKEN && data_pos < DATA_SIZE) {
         switch (PROGRAM[prog_pos].type) {
-            case INC_TOKEN: data_pos++; break;
-            case DEC_TOKEN: data_pos--; break;
-            case INC_VAL_TOKEN: data[data_pos]++; break;
-            case DEC_VAL_TOKEN: data[data_pos]--; break;
-            case OUT_TOKEN: putchar(data[data_pos]); break;
-            case IN_TOKEN: data[data_pos] = (unsigned short)getchar(); break;
-            case LOOP_TOKEN: if(!data[data_pos]) { prog_pos = PROGRAM[prog_pos].value; } break;
-            case GOTO_TOKEN: if(data[data_pos]) { prog_pos = PROGRAM[prog_pos].value; } break;
+            case INC_TOKEN: 
+				data_pos++;
+				break;
+				
+            case DEC_TOKEN: 
+				data_pos--; 
+				break;
+				
+            case INC_VAL_TOKEN: 
+				data[data_pos]++; 
+				break;
+				
+            case DEC_VAL_TOKEN: 
+				data[data_pos]--; 
+				break;
+				
+            case OUT_TOKEN: 
+				putchar(data[data_pos]); 
+				break;
+				
+            case IN_TOKEN: 
+				data[data_pos] = (unsigned short)getchar(); 
+				break;
+				
+            case LOOP_TOKEN: 
+				if(!data[data_pos]){ 
+					prog_pos = PROGRAM[prog_pos].value; 
+					/* similar to a while loop, conditional jump to the next } 
+						if the condition is not satisfied */
+					} 
+				break;
+				
+            case GOTO_TOKEN: 
+				if(data[data_pos]){ 
+					prog_pos = PROGRAM[prog_pos].value;
+					} 
+				break;
+				
             default: return -1;
         }
 		
