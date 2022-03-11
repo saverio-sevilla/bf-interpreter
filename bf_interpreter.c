@@ -4,13 +4,13 @@
 
 #define INC_TOKEN	    1
 #define DEC_TOKEN	    2
-#define INC_VAL_TOKEN	3
-#define DEC_VAL_TOKEN	4
+#define INC_VAL_TOKEN	    3
+#define DEC_VAL_TOKEN	    4
 #define OUT_TOKEN	    5
 #define IN_TOKEN	    6
-#define LOOP_TOKEN      7
-#define GOTO_TOKEN      8
-#define EOF_TOKEN       0
+#define LOOP_TOKEN          7
+#define GOTO_TOKEN          8
+#define EOF_TOKEN           0
 
 #define PROGRAM_SIZE  4096
 #define DATA_SIZE 65535
@@ -196,7 +196,7 @@ int execute() {
 int main() {
 		
 	FILE *fptr;
-	char* filename = "C:\\Users\\Saverio\\Desktop\\Programs\\C\\C_workspace\\bf_interpreter\\bf_program.txt";
+	char* filename = "bf_program.txt";
 	fptr = fopen(filename, "r");
 	
 	if (fptr == NULL){
